@@ -23,9 +23,19 @@ class DrawingCircle(context: Context?, attrs: AttributeSet?) : View(context, att
     }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-        xpos= event!!.x
-        ypos= event.y
-        invalidate()
-        return super.onTouchEvent(event)
+        if (event!!.action==MotionEvent.ACTION_DOWN){
+            xpos= event!!.x
+            ypos= event.y
+            invalidate()
+            return true
+        }
+        else if (event!!.action==MotionEvent.ACTION_MOVE){
+            xpos= event!!.x
+            ypos= event.y
+            invalidate()
+            return true
+        }
+        else{return false}
+
     }
 }
